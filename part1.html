@@ -102,6 +102,8 @@ var config = {
         this.physics.add.collider(player, platforms); //player colides with platforms
 
         this.physics.add.collider(stars, platforms); //stars collide with platforms
+
+        this.physics.add.overlap(player, stars, collectStar, null, this);
     }
 
     function update ()
@@ -129,6 +131,11 @@ var config = {
       {
           player.setVelocityY(-330);
       }
+    }
+
+    function collectStar (player, star)
+    {
+        star.disableBody(true, true);
     }
 
 </script>
