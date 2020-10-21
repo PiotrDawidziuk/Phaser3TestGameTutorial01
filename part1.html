@@ -46,7 +46,12 @@ var config = {
             );
     }
 
+    var player;
+    var stars;
     var platforms;
+    var cursors;
+    var score = 0; //score that you get from collecting stars
+    var scoreText; // text that shows your score on the screen
 
     function create ()
     {
@@ -105,9 +110,6 @@ var config = {
 
         this.physics.add.overlap(player, stars, collectStar, null, this);
 
-
-        var score = 0; // starting score
-        var scoreText;
         scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' }); //score shows up on the screen
 
     }
@@ -130,10 +132,10 @@ var config = {
       {
           player.setVelocityX(0);
 
-          player.anims.play('turn');
+          player.anims.play('turn'); // if you don't move you look in the direction of the screen
       }
 
-      if (cursors.up.isDown && player.body.touching.down)
+      if (cursors.up.isDown && player.body.touching.down) //jumping only when standing on the ground
       {
           player.setVelocityY(-330);
       }
@@ -142,6 +144,9 @@ var config = {
     function collectStar (player, star) //function that makes stars disappear
     {
         star.disableBody(true, true);
+
+        score += 10; //adds score
+        scoreText.setText('Score: ' + score); //changes text
     }
 
 </script>
