@@ -100,6 +100,8 @@ var config = {
         cursors = this.input.keyboard.createCursorKeys(); // creates input from keyboard
 
         this.physics.add.collider(player, platforms); //player colides with platforms
+
+        this.physics.add.collider(stars, platforms); //stars collide with platforms
     }
 
     function update ()
