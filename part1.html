@@ -85,6 +85,18 @@ var config = {
             repeat: -1
         });
 
+        stars = this.physics.add.group({ //Stars added
+            key: 'star',
+            repeat: 11,
+            setXY: { x: 12, y: 0, stepX: 70 }
+        });
+
+        stars.children.iterate(function (child) {
+
+            child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+
+        });
+
         cursors = this.input.keyboard.createCursorKeys(); // creates input from keyboard
 
         this.physics.add.collider(player, platforms); //player colides with platforms
