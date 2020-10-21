@@ -104,6 +104,12 @@ var config = {
         this.physics.add.collider(stars, platforms); //stars collide with platforms
 
         this.physics.add.overlap(player, stars, collectStar, null, this);
+
+
+        var score = 0; // starting score
+        var scoreText;
+        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' }); //score shows up on the screen
+
     }
 
     function update ()
@@ -133,7 +139,7 @@ var config = {
       }
     }
 
-    function collectStar (player, star)
+    function collectStar (player, star) //function that makes stars disappear
     {
         star.disableBody(true, true);
     }
